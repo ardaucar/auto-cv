@@ -79,7 +79,9 @@
 %CV Sections inspired by: 
 %http://stefano.italians.nl/archives/26
 \titleformat{\section}{\Large\scshape\raggedright}{}{0em}{}[\titlerule]
-\titlespacing{\section}{0pt}{10pt}{10pt}
+\titlespacing{\section}{0pt}{5pt}{8pt}
+\hyphenpenalty=10000
+\exhyphenpenalty=10000
 
 %for publications
 \usepackage[style=authoryear,sorting=ynt, maxbibnames=2]{biblatex}
@@ -99,29 +101,40 @@
 
 
 % job listing environments
-\newenvironment{jobshort}[2]
+\newenvironment{jobshort}[4]
     {
     \begin{tabularx}{\linewidth}{@{}l X r@{}}
-    \textbf{#1} & \hfill &  #2 \\[3.75pt]
+    \textbf{#1} \textit{/ #2} & \hfill & #3 \\[3.5pt]
+    \hfill & \hfill & \small{ #4} \\[3.5pt]
     \end{tabularx}
     }
     {
     }
 
-\newenvironment{joblong}[2]
+\newenvironment{joblong}[4]
     {
     \begin{tabularx}{\linewidth}{@{}l X r@{}}
-    \textbf{#1} & \hfill &  #2 \\[3.75pt]
+    \textbf{#1} {\small\textit{/ #2 / #4} } & \hfill & #3 \\[3.5pt]
     \end{tabularx}
+    \vspace{3.5pt}
     \begin{minipage}[t]{\linewidth}
-    \begin{itemize}[nosep,after=\strut, leftmargin=1em, itemsep=3pt,label=--]
+    \begin{itemize}[nosep,after=\strut, leftmargin=1.5em, itemsep=4pt,label=--]
     }
     {
     \end{itemize}
-    \end{minipage}    
+    \end{minipage}
+    \vspace{-6pt}
     }
 
-
+\newenvironment{educationshort}[5]
+    {
+    \begin{tabularx}{\linewidth}{@{}l X r@{}}
+    \textbf{#1} {\small\textit{/ #2}} & \hfill & #3 \\[3.5pt]
+    -- #4 & \hfill & #5 \\[3pt]
+    \end{tabularx}
+    }
+    {
+    }
 
 %----------------------------------------------------------------------------------------
 %	BEGIN DOCUMENT
@@ -142,12 +155,13 @@
 % \end{tabularx}
 
 \begin{tabularx}{\linewidth}{@{} C @{}}
-\Huge{Your Name} \\[7.5pt]
-\href{https://github.com/username}{\raisebox{-0.05\height}\faGithub\ username} \ $|$ \ 
-\href{https://linkedin.com/in/username}{\raisebox{-0.05\height}\faLinkedin\ username} \ $|$ \ 
-\href{https://mysite.com}{\raisebox{-0.05\height}\faGlobe \ mysite.com} \ $|$ \ 
-\href{mailto:email@mysite.com}{\raisebox{-0.05\height}\faEnvelope \ email@mysite.com} \ $|$ \ 
-\href{tel:+000000000000}{\raisebox{-0.05\height}\faMobile \ +00.00.000.000} \\
+\Huge{Arda Ucar} \\[7.5pt]
+\href{https://github.com/ardaucar}{\raisebox{-0.05\height}\faGithub\ ardaucar} \ $|$ \ 
+\href{https://www.linkedin.com/in/arda-ucar/}{\raisebox{-0.05\height}\faLinkedin\ arda-ucar} \ $|$ \ 
+\href{https://ardaucar.com}{\raisebox{-0.05\height}\faGlobe \ ardaucar.com} \ $|$ \ 
+\href{mailto:ardaucar034@gmail.com}{\raisebox{-0.05\height}\faEnvelope \ ardaucar034@gmail.com} \ $|$ \ 
+\href{tel:+905393879918}{\raisebox{-0.05\height}\faMobile \ +90 539 387 9918} \\
+{\small Istanbul, Turkey 34535}
 \end{tabularx}
 
 %----------------------------------------------------------------------------------------
@@ -156,62 +170,61 @@
 
 %Interests/ Keywords/ Summary
 \section{Summary}
-This CV can also be automatically compiled and published using GitHub Actions. For details, \href{https://github.com/jitinnair1/autoCV}{click here}.
+Full-stack developer with hands-on experience building production-grade accounting, CRM, and banking automation systems using Laravel, Livewire, and modern JavaScript frameworks. Specialized in ERP integrations, workflow automation, and data-driven financial platforms that reduce operational overhead. Strong focus on scalable backend architectures, clean UI/UX principles, and delivering reliable, business oriented software solutions.
 
-%Experience
+%----------------------------------------------------------------------------------------
+%	WORK EXPERIENCE
+%----------------------------------------------------------------------------------------
 \section{Work Experience}
 
-\begin{jobshort}{Designation}{Jan 2021 - present}
-long long line of blah blah that will wrap when the table fills the column width long long line of blah blah that will wrap when the table fills the column width long long line of blah blah that will wrap when the table fills the column width long long line of blah blah that will wrap when the table fills the column width
-\end{jobshort}
-
-
-\begin{joblong}{Designation}{Mar 2019 - Jan 2021}
-\item long long line of blah blah that will wrap when the table fills the column width
-\item again, long long line of blah blah that will wrap when the table fills the column width but this time even more long long line of blah blah. again, long long line of blah blah that will wrap when the table fills the column width but this time even more long long line of blah blah
+\begin{joblong}{Vima Software}{Freelance Fullstack Developer}{Jan 2020 - Present}{Istanbul, Turkey}
+\item Delivered full-stack applications using Next, React, and PHP, helping clients automate operations and improve digital sales through e-commerce and product platforms.
+\item Built web management systems and Java-based automation tools, improving administrative visibility and reducing repetitive operational tasks for clients.
 \end{joblong}
-  
-%Projects
-\section{Projects}
 
-\begin{tabularx}{\linewidth}{ @{}l r@{} }
-\textbf{Some Project} & \hfill \href{https://some-link.com}{Link to Demo} \\[3.75pt]
-\multicolumn{2}{@{}X@{}}{long long line of blah blah that will wrap when the table fills the column width long long line of blah blah that will wrap when the table fills the column width long long line of blah blah that will wrap when the table fills the column width long long line of blah blah that will wrap when the table fills the column width}  \\
-\end{tabularx}
+\begin{joblong}{Bankentegre}{Software and Business Development}{Aug 2024 - Jun 2025}{Istanbul, Turkey}
+\item Developed and maintained a C\#-based automated banking application integrated with LOGO ERP, reducing manual banking operations and increasing reliability in financial data processing.
+\vspace{-2pt}
+\end{joblong}
+
+\begin{joblong}{DBA Danışmanlık ve Teknoloji}{Software Developer}{Jul 2024 - Jun 2025}{Istanbul, Turkey}
+\item Designed and built a standalone accounting platform with Laravel \& Livewire, improving financial workflows and reducing manual accounting operations through automated voucher and reporting modules.
+\item Developed a modular reporting system integrated with LOGO ERP, enabling real-time financial insights and significantly speeding up internal reporting processes.
+\item Built a secure, role-based internal CRM platform with Laravel \& Livewire, streamlining customer workflows and improving cross-department coordination.
+\end{joblong}
+\vspace{-8pt}
 
 %----------------------------------------------------------------------------------------
 %	EDUCATION
 %----------------------------------------------------------------------------------------
 \section{Education}
-\begin{tabularx}{\linewidth}{@{}l X@{}}	
-2030 - present & PhD (Subject) at \textbf{University} \hfill \normalsize (GPA: 4.0/4.0) \\
 
-2023 - 2027 & Bachelor's Degree at \textbf{College} \hfill (GPA: 4.0/4.0) \\ 
+\begin{educationshort}
+{İstanbul Gelişim University}{Istanbul, Turkey}{Sep 2023 - Sep 2024}
+{Completed Associate’s Degree in Computer Programming}{Graduated with Honors, GPA: 3.08}
+\end{educationshort}
 
-2022 & Class 12th Some Board \hfill  (Grades) \\
-
-2021 & Class 10th Some Board \hfill  (Grades) \\
-\end{tabularx}
-
-%----------------------------------------------------------------------------------------
-%	PUBLICATIONS
-%----------------------------------------------------------------------------------------
-\section{Publications}
-\begin{refsection}[citations.bib]
-\nocite{*}
-\printbibliography[heading=none]
-\end{refsection}
+\begin{educationshort}
+{Trakya University}{Edirne, Turkey}{Sep 2022 - Jul 2023}
+{Pursued Associate’s Degree in Mobile Technologies}{GPA: 3.70}
+\end{educationshort}
+\vspace{-8pt}
 
 %----------------------------------------------------------------------------------------
 %	SKILLS
 %----------------------------------------------------------------------------------------
-\section{Skills}
-\begin{tabularx}{\linewidth}{@{}l X@{}}
-Some Skills &  \normalsize{This, That, Some of this and that etc.}\\
-Some More Skills  &  \normalsize{Also some more of this, Some more that, And some of this and that etc.}\\  
-\end{tabularx}
+\section{Certificates \& Skills}
+
+\begin{itemize}[nosep,after=\strut, leftmargin=1em, itemsep=2.5pt,label=\textbullet]
+    \item \textbf{Certificate}: Logo System Expert Certificate (Logo Academy)
+    \item \textbf{Programming \& Frameworks}: PHP, JavaScript, Laravel, Livewire, Next.js, React
+    \item \textbf{Backend}: Java, C\#, REST APIs, Authentication, ERP/LOGO Integrations, OOP, MVC
+    \item \textbf{Databases}: MySQL, MSSQL, SQL Query Optimization, Firebase
+    \item \textbf{Tools \& DevOps}: Git, Docker, Linux (Debian), Postman, WordPress 
+    \item \textbf{Frontend}: Tailwind, Bootstrap, HTML5, CSS3
+    \item \textbf{Languages}: Native Turkish, English (B2 – Professional Working Proficiency)
+\end{itemize}
 
 \vfill
-\center{\footnotesize Last updated: \today}
 
 \end{document}
