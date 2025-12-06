@@ -2,7 +2,7 @@
 
 This is a repository to store and deploy automatically my CV by using GitHub actions and pages.
 
-You can view generated [cv (en)](https://ardaucar.github.io/auto-cv/ardaucar-resume.pdf) and [cv (tr)](https://ardaucar.github.io/auto-cv/ardaucar-ozgecmis) here.
+You can view generated [cv (en)](https://ardaucar.github.io/auto-cv/ardaucar-resume.pdf) and [cv (tr)](https://ardaucar.github.io/auto-cv/ardaucar-ozgecmis.pdf) here.
 
 If you have the interest, visit [my website](https://ardaucar.com/) as well.
 
