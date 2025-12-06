@@ -9,20 +9,30 @@ jobs:
       # Edit here with the names of your latex file and directory (can use ".")
       DIR: .
       FILE: cv
+      FILE_TR: cv-tr
     steps:
       - name: Set up Git repository
         uses: actions/checkout@v4
-      - name: cv
+      - name: Build EN CV
         uses: dante-ev/latex-action@latest
         with:
-          root_file: ${{ env.FILE }}
+          root_file: ${{ env.FILE }}.tex
           working_directory: ${{ env.DIR }}
-      - name: move
-        run: mkdir -p github_artifacts && mv ${{ env.DIR }}/${{ env.FILE }}.pdf ./github_artifacts/
+      - name: Build TR CV
+        uses: dante-ev/latex-action@latest
+        with:
+          root_file: ${{ env.FILE_TR }}.tex
+          working_directory: ${{ env.DIR }}
+      - name: Prepare artifacts
+        run: mkdir -p github_artifacts
+      - name: Move EN CV
+        run: mv ${{ env.DIR }}/${{ env.FILE }}.pdf ./github_artifacts/ardaucar-resume.pdf
+      - name: Move TR CV
+        run: mv ${{ env.DIR }}/${{ env.FILE_TR }}.pdf ./github_artifacts/ardaucar-ozgecmis.pdf
       - name: Upload pdf as artifact
         uses: actions/upload-artifact@v4
         with:
-          name: ${{ env.FILE }}.pdf
+          name: pdfs
           path: ./github_artifacts
   deploy:
     needs: [build]
@@ -33,9 +43,9 @@ jobs:
       - uses: actions/download-artifact@v4
         with:
           path: github_artifacts
-      - name: move
-        run: mkdir -p github_deploy && mv github_artifacts/*/* github_deploy
-      - name: deploy on orphan branch
+      - name: Move PDFs
+        run: mkdir -p github_deploy && mv github_artifacts/pdfs/* github_deploy
+      - name: Deploy to build branch
         uses: peaceiris/actions-gh-pages@v4
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
